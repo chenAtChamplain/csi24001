@@ -1,112 +1,258 @@
 /*
-Class: CSI-240-01
-Assignment: FINAL PROJECT
+Author: RJ Robbins
+Class: Advanced Programming
+Assignment: Final Project
 Date Assigned: 3/17/15
 Due Date: 4/24/15 11:00AM
 
-Description:
-A class for organizing table data for a restaurant program
+Description: This file simply creates the structure for MenuItem objects.
 
 Certification of Authenticity:
-We certify that this is entirely our own work, except where we have given fully
-documented references to the work of others. We understand the definition and
-consequences of plagiarism and acknowledge that the assessor of this assignment
-may, for the purpose of assessing this assignment:
--Reproduce this assignment and provide a copy to another member of
-academic staff; and/or
--Communicate a copy of this assignment to a plagiarism checking service
-(which may then retain a copy of this assignment on its database for
-the purpose of future plagiarism checking)
+I certify that this is entirely my own work, except where I have given fully-documented references to the work of others. I understand the
+definition and consequences of plagiarism and acknowledge that the assessor of this assignment may, for the purpose of assessing this assignment:
+- Reproduce this assignment and provide a copy to another member of academic staff; and/or
+- Communicate a copy of this assignment to a plagiarism checking service (which may then retain a copy of this assignment on its
+database for the purpose of future plagiarism checking)
 */
-
-
-//  Author: RJ Robbins
 
 #include "MenuItem.h"
 
-menuItem::menuItem(string name, double pr, string desc, int cat)
+static const int MenuItem_WIDTH = 13;
+
+MenuItem::MenuItem()
 {
-   itemName = name;
+
+}
+
+MenuItem::MenuItem(string name, double pr, string desc, int cat)
+{
+	itemName = name;
 	price = pr;
 	description = desc;
-	category = cat;
+
+	switch (cat)
+	{
+	case 0:
+		category = appetizer;
+		break;
+	case 1:
+		category = entree;
+		break;
+	case 2:
+		category = dessert;
+		break;
+	case 3:
+		category = beverage;
+		break;
+	default:			//remains uncategorized
+		break;
+	}
 }
 
-int menuItem::compareTo(menuItem item)
+MenuItem::~MenuItem()
 {
-   if (category == item.getCategory() && price == item.getPrice())
-      if (itemName.compare(item.itemName) < 0)
-         return -1;			//the original item is alphabetically after the parameter item
-      else if (itemName.compare(item.itemName) > 0)
-         return 1;			//the original item is alphabetically before the parameter item
-      else
-         return 0;			//the original item is the same as the parameter item
 
-      return -2;
 }
 
-string menuItem::display()			//returns name and price of an item on 1 line
+int MenuItem::compareTo(MenuItem item)			//compares 2 MenuItems alphabetically
 {
-   return itemName + " $" + price;
+	//if (category == item.getCategory() && price == item.getPrice())
+	//	if (itemName.compare(item.itemName) < 0)
+	//		return -1;			//the original item is alphabetically after the parameter item
+	//	else if (itemName.compare(item.itemName) > 0)
+	//		return 1;			//the original item is alphabetically before the parameter item
+	//	else
+	//		return 0;			//the original item is the same as the parameter item
+	//
+	//return -2;			//not in same categories and/or have different prices
+
+	if (itemName < item.itemName)
+		return 1;
+	else if (itemName > item.itemName)
+		return -1;
+
+	return 0;
 }
 
-string menuItem::displayFull()			//returns name and price of an item on 1 line and the item's description on the next
+void MenuItem::display()			//outputs name and price of an item on 1 line
 {
-	return itemName + " $" + price + "\n" + description;
+	//cout << itemName << " $" << price << endl;
+
+	cout << left << setw(12) << itemName << right << setw(8) << price << endl;
 }
 
-Category menuItem::getCategory()
+void MenuItem::displayFull()			//outputs name and price of an item on 1 line and the item's description on the next
+{
+	//cout << itemName << " $" << price << endl << description << endl;
+
+	cout << left << setw(12) << itemName << right << setw(8) << price << endl;
+	cout << description << endl;
+}
+
+Category MenuItem::getCategory()
 {
 	return category;
 }
 
-string menuItem::getDescription()
+string MenuItem::getDescription()
 {
 	return description;
 }
 	
-string menuItem::getName()
+string MenuItem::getName()
 {
 	return itemName;
 }
 	
-double menuItem::getPrice()
+double MenuItem::getPrice()
 {
 	return price;
 }
 
-void menuItem::operator=(const menuItem& rhs)			//sets all variables in the lhs menuItem to the values of the rhs ones
+void MenuItem::operator=(const MenuItem& rhs)			//sets all variables in the lhs MenuItem to the values of the rhs ones
 {
-	this.itemName = rhs.itemName;
-	this.price = rhs.price;
-	this.description = rhs.description;
-	this.category = rhs.category;
+	itemName = rhs.itemName;
+	price = rhs.price;
+	description = rhs.description;
+	category = rhs.category;
 }
 
-bool menuItem::operator==(const menuItem& rhs)			//checks if the name of the lhs menuItem == the name of the rhs one
+bool MenuItem::operator==(const MenuItem& rhs)			//checks if the name of the lhs MenuItem == the name of the rhs one
 {
-	if (this.itemName == rhs.itemName)
+	if (itemName == rhs.itemName)
 		return true;
 		
 	return false;
 }
 
-void menuItem::setCategory(Category newCat)
+bool MenuItem::operator==(string name)			//checks if the name of the lhs MenuItem == an inputted name
 {
-	category = newCat;
+	if (itemName == name)
+		return true;
+
+	return false;
 }
 
-void menuItem::setDescription(string newDesc)
+void MenuItem::setCategory(int newCat)
+{
+	switch (newCat)
+	{
+	case 0:
+		category = appetizer;
+		break;
+	case 1:
+		category = entree;
+		break;
+	case 2:
+		category = dessert;
+		break;
+	case 3:
+		category = beverage;
+		break;
+	default:
+		break;
+	}
+}
+
+void MenuItem::setDescription(string newDesc)
 {
 	description = newDesc;
 }
 	
-void menuItem::setName(string newName)
+void MenuItem::setName(string newName)
 {
 	itemName = newName;
 }
 
-void menuItem::setPrice(double newPrice)
+void MenuItem::setPrice(double newPrice)
 {
 	price = newPrice;
 }
+
+//====================
+
+istream& operator>>(istream& input, MenuItem& info)
+{
+	int catNum;
+	string tmp;
+
+	cout << setw(12) << "Enter name:  ";
+	getline(input, info.itemName);
+
+	cout << setw(12) << "Enter item category by number:  ";
+	input >> catNum;
+	getline(input, tmp);
+	info.setCategory(catNum);
+
+	cout << setw(12) << "Enter price:  ";
+	input >> info.price;
+	getline(input, tmp);
+
+	cout << setw(12) << "Enter description:  ";
+	getline(input, info.description);
+
+	return input;
+}
+
+ostream& operator<<(ostream& output, MenuItem info)
+{
+	output << setw(MenuItem_WIDTH) << "MenuItem ID:  "
+		<< info.getName() << endl
+		<< setw(MenuItem_WIDTH) << "MenuItem category:  "
+      << info.getCategory() << endl
+		<< setw(MenuItem_WIDTH) << "MenuItem price:  "
+      << info.getPrice() << endl;
+
+	return output;
+}
+
+ifstream& operator>>(ifstream& lhs, MenuItem& rhs)
+{
+	int i;
+	string s;
+
+	getline(lhs, rhs.itemName);
+
+	lhs >> rhs.price;
+	getline(lhs, s);
+
+	getline(lhs, rhs.description);
+
+	lhs >> i;
+	getline(lhs, s);
+
+	if (i == 0)
+		rhs.category = appetizer;
+	else if (i == 1)
+		rhs.category = entree;
+	else if (i == 2)
+		rhs.category = dessert;
+	else if (i == 3)
+		rhs.category = beverage;			//reamins NULL for any other values (-1)
+
+	getline(lhs, s);
+
+   return lhs;
+}
+
+ofstream& operator<<(ofstream& lhs, MenuItem& rhs)
+{
+	lhs << rhs.itemName << endl;
+	lhs << rhs.price << endl;
+	lhs << rhs.description << endl;
+
+	if (rhs.category == appetizer)
+		lhs << 0 << endl;
+	else if (rhs.category == entree)
+		lhs << 1 << endl;
+	else if (rhs.category == dessert)
+		lhs << 2 << endl;
+	else if (rhs.category == beverage)
+		lhs << 3 << endl;
+	else
+		lhs << -1 << endl;			//if rhs.category is NULL
+
+	lhs << endl;			//spaces between objects in file
+
+   return lhs;
+};

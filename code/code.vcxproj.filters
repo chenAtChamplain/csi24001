@@ -30,10 +30,19 @@
     <ClCompile Include="Table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TableStatesFunctions.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="employee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IOComm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NumberList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="waiter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,6 +60,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IOComm.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NumberList.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="waiter.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="employee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

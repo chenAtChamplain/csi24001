@@ -1,4 +1,6 @@
 /*
+ 
+ Author: Nicholas Boyle
  Class: CSI-240-01
  Assignment: FINAL PROJECT
  Date Assigned: 3/17/15
@@ -8,8 +10,8 @@
  A class for organizing table data for a restaurant program
  
  Certification of Authenticity:
- We certify that this is entirely our own work, except where we have given fully
- documented references to the work of others. We understand the definition and
+ I certify that this is entirely my own work, except where I have given fully
+ documented references to the work of others. I understand the definition and
  consequences of plagiarism and acknowledge that the assessor of this assignment
  may, for the purpose of assessing this assignment:
  -Reproduce this assignment and provide a copy to another member of
@@ -19,17 +21,11 @@
  the purpose of future plagiarism checking)
  */
 
-
-
-// Author: Nicholas Boyle
-
 #ifndef __TABLE_H__
 #define __TABLE_H__
 
-#include <iostream>
+#include <stdio.h>
 #include "LinkedList.h"
-
-using namespace std;
 
 
 

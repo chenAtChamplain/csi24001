@@ -1,33 +1,19 @@
-/*
-Class: CSI-240-01
-Assignment: FINAL PROJECT
-Date Assigned: 3/17/15
-Due Date: 4/24/15 11:00AM
-
-Description:
-A class for organizing table data for a restaurant program
-
-Certification of Authenticity:
-We certify that this is entirely our own work, except where we have given fully
-documented references to the work of others. We understand the definition and
-consequences of plagiarism and acknowledge that the assessor of this assignment
-may, for the purpose of assessing this assignment:
--Reproduce this assignment and provide a copy to another member of
-academic staff; and/or
--Communicate a copy of this assignment to a plagiarism checking service
-(which may then retain a copy of this assignment on its database for
-the purpose of future plagiarism checking)
-*/
-
-
-
 #pragma once
 #include <iostream>
 #include <string>
 
 #include "employee.h"
+#include "table.h"
+#include "NumberList.h" //or whatever Matt really names it
+#include <conio.h>
+#include <vector>
 
 const int MAX_TABLES = 15;
+const int tableSizes[] = { 2, 2, 4, 4, 4, 4, 4, 2, 6, 4, 4, 4, 2, 6, 4 };
+
+const string LOGIN_FILE_NAME = "login.txt",
+             DINER_MENU = "diningMenu.txt",
+             TABLE_STATES = "tableState.txt";
 
 /* Amount of options in each employee menu. */
 const int MANAGER_NUM_OPTIONS = 8;
@@ -43,7 +29,7 @@ const std::string MANAGER_OPTIONS[MANAGER_NUM_OPTIONS] {
 		"Fire Employee",
 		"Update Employee Data",
 		"Search for Employee",
-		"Select Daily Staff",
+		"Select Daily Staff",  
 		"Generate Daily Report",
 		"Log Out",
 		"Shut Down"
@@ -66,7 +52,7 @@ const std::string WAIT_OPTIONS[WAIT_NUM_OPTIONS] {
 };
 
 const std::string COOK_OPTIONS[COOK_NUM_OPTIONS] {
-		"Display Item Menu",
+	"Display Item Menu",
 		"Change Item on Menu",
 		"Delete Item on Menu",
 		"Add Item to Menu",
@@ -75,16 +61,53 @@ const std::string COOK_OPTIONS[COOK_NUM_OPTIONS] {
 		"Log Out"
 };
 
+
+
 class Restaurant
 {
 private:
+	int mNumOfOrders; //for adding up cumulative number of table orders for End Of Day Report
+	double mGrandTotal; //for adding up bills as we go along for End Of Day Report
 	Employee mCurrentUser;
+	//NumberList mKitchenList;  //improve variable name?
+	LinkedList mDiningMenu;  //better: DiningMenu mDiningMenu;
+	Table mTables[MAX_TABLES];
 
-	void waitMenu();
-	void hostMenu();
-	void managerMenu();
+	bool addMenuItem();
+	void billPaid();
+	void changeEmployee();
+   bool changeItemOrder(vector<string> order, int numChange, string newOrder);
+	bool changeMenuItem();
+	void changeMenuPrice();
+	bool checkOrderStatus(int orderNumber); //but there is no order number
+	bool clearTable();
 	void cookMenu();
-	int getInputBetween(int min, int max);
+	void dailyReport();
+   bool deleteItemOrder(vector<string> order, int numChange);
+	bool deleteMenuItem();
+	void displayDinerMenu();
+	void displayOpenTables();
+	void displayTables();
+	void fireEmployee();
+	void generateBill();
+	int  getInputBetween(int min, int max);
+	void hireEmployee();
+	void hostMenu();
+	void login();
+   void loadDinerMenu();
+	void managerMenu();
+	void orderReady();
+	void restoreTableStates();
+   void saveDinerMenu();
+	void saveTableStates();
+	void searchEmployee();
+	bool seatTable();
+	bool seatTable(int& tableId, string& waiter); // no waiter; 
+	void shutDown();
+   bool takeOrder(vector<string>mTakeOrder);
+	void viewOrderInProgress(NumberList orderList);
+	void waitMenu();
+	
 
 public:
 	Restaurant();
@@ -95,7 +118,7 @@ public:
 	void hostOperations();
 	void managerOperations();
 	void cookOperations();
-
+   void runRestaurant();
 
 
 };

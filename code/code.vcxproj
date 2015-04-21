@@ -65,19 +65,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cook.cpp" />
+    <ClCompile Include="employee.cpp" />
+    <ClCompile Include="IOComm.cpp" />
     <ClCompile Include="linkedList.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuItem.cpp" />
+    <ClCompile Include="NumberList.cpp" />
     <ClCompile Include="restaurant.cpp" />
     <ClCompile Include="Table.cpp" />
-    <ClCompile Include="TableStatesFunctions.cpp" />
+    <ClCompile Include="waiter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cook.h" />
+    <ClInclude Include="employee.h" />
+    <ClInclude Include="IOComm.h" />
     <ClInclude Include="linkedList.h" />
     <ClInclude Include="MenuItem.h" />
+    <ClInclude Include="NumberList.h" />
     <ClInclude Include="restaurant.h" />
     <ClInclude Include="Table.h" />
+    <ClInclude Include="waiter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
