@@ -1,0 +1,30 @@
+Elena Kagan
+Manager
+111111111
+8025551960
+Massachusetts
+20.11
+Sonia Sotomayor
+Host
+222222222
+8025551954
+New York
+20.09
+Samuel Alito
+Waiter
+333333333
+8025551950
+New Jersey
+20.06
+John Roberts
+Cook
+444444444
+8025551955
+Maryland
+20.05
+Stephen Breyer
+Manager
+555555555
+8025551938
+Massachusetts
+19.94

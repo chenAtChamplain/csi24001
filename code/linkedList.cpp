@@ -83,10 +83,10 @@ void LinkedList::displayFull()
 */
 bool LinkedList::empty()
 {
-	if (mHead != NULL)
-		return false;
-	else
+	if (mHead == NULL)
 		return true;
+	else
+		return false;
 }
 
 /*
@@ -353,7 +353,46 @@ bool LinkedList::pushOrder(MenuItem item)
  */
 bool LinkedList::remove(string name)
 {
-	//IN PROGRESS
+	//IN PROGRESS--TESTING VERSION
+
+	/*
+	testing version
+	textbook page 1037
+	*/
+	
+	{
+		bool found = false;
+		Node *prev, *temp;
+
+		if (mHead != NULL)
+		{
+			if (mHead->mData == name)
+			{
+				temp = mHead;
+				mHead = mHead->mNext;
+				delete temp;
+				found = true;
+			}
+			else
+			{
+				prev = temp = mHead;
+
+				while (temp != NULL && !(temp->mData == name))
+				{
+					prev = temp;
+					temp = temp->mNext;
+				}
+				if (temp) // temp is not null
+				{
+					prev->mNext = temp->mNext;
+					delete temp;
+					found = true;
+				}
+			}
+		}
+		return found;
+	}
+
 	return false;
 }
 
@@ -395,7 +434,6 @@ bool LinkedList::search(string name)
 } 
 
 /*
- IN PROGRESS 
  Pre: a linked list
  Post: sorts list by category, then by price, then by name
  Purpose: so list will be in order for kitchen or bill printing or 
@@ -405,7 +443,99 @@ bool LinkedList::search(string name)
  */
 void LinkedList::sort()
 {
+	MenuItem data;
+	Node* temp;
+	int count=  0;
 
+	if (mHead != NULL)
+	{
+		temp = mHead;
+
+		for (int cat = 0; cat<4; cat++)
+		{
+			while (temp != NULL) // Sorts type.
+			{
+				data = temp->mData;
+				switch (cat)
+				{
+				case 0:
+					if (data.getCategory() == dessert)
+					{
+						remove(data.getName());
+						pushOrder(data);
+					}
+					break;
+				case 1:
+					if (data.getCategory() == entree)
+					{
+						remove(data.getName());
+						pushOrder(data);
+					}
+					break;
+				case 2:
+					if (data.getCategory() == appetizer)
+					{
+						remove(data.getName());
+						pushOrder(data);
+					}
+					break;
+				case 3:
+					if (data.getCategory() == beverage)
+					{
+						remove(data.getName());
+						pushOrder(data);
+					}
+					break;
+				default:
+					break;
+				}
+				temp = temp->mNext;
+				count++;
+			}
+			for (int i = 0; i<count; i++) // Sorts price.
+			{
+				temp = mHead;
+
+				for (int j = 0; j<i; j++) // Moving temp up to the next spots.
+				{
+					temp = temp->mNext;
+				}
+
+				for (int j = 1; j<count - i; j++)
+				{
+					double min = mHead->mData.getPrice();
+					data = temp->mData;
+					if (data.getPrice() <= min)
+					{
+						min = data.getPrice();
+						remove(data.getName());
+						pushOrder(data);
+					}
+					temp = temp->mNext;
+				}
+			}
+			for (int i = 0; i<count; i++) // Sorts name.
+			{
+				temp = mHead;
+				Node* temp2 = temp;
+
+				temp2 = temp2->mNext;
+
+				while (temp->mData.getPrice() == temp2->mData.getPrice())
+				{
+					if (temp->mData.compareTo(temp2->mData) > 0)
+					{
+						data = temp->mData;
+						temp->mData = temp2->mData;
+						temp2->mData = data;
+					}
+					temp = temp->mNext;
+				}
+				delete temp2;
+			}
+			delete temp;
+		}
+	}
 }
 
 /*

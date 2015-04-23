@@ -5,20 +5,13 @@
 #include<iostream> 
 #include<sstream>
 #include<vector>
- 
+
+#include "employee.h"
 using namespace std; 
  
-class Waiter  
+class Waiter : public Employee
 { 
    private:  
-      double mPay;  
-  
-      string mName;  
-      string mAddress;  
-      string mPhoneNumber;   
-      string mSSN;  
-      string mID;  
-     
       vector<string>mTakeOrder;
 
    public:  

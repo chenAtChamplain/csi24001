@@ -37,7 +37,6 @@ enum EMPLOYEE_TYPE {
 };
 
 const int SPACING = 25;
-const string EMPLOYEE_FILE = "employeeInfo.txt";
 
 class Employee
 {

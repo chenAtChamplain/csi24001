@@ -24,33 +24,188 @@
 #include "Table.h"
 
 
+Table::Table()
+{
+    mNumberOfSeats = 0;
+    mSeatsOccupied = 0;
+    mWaiterID = "";
+}
 
+Table::Table(unsigned int numberOfSeats, std::string waiterID)
+{
+    mNumberOfSeats = numberOfSeats;
+    mSeatsOccupied = 0;
+    mWaiterID = waiterID;
+}
+
+Table::~Table()
+{
+    
+}
+
+/*
+ *PRE: Nothing
+ *
+ *POST: number of seats is returned
+ *
+ *PURPOSE: to return the number of seats
+ *
+ ********************************************************/
 unsigned int Table::getNumberOfSeats()
 {
     return mNumberOfSeats;
 }
 
+/*
+ *PRE: unsigned int representing the number of seats
+ *
+ *POST: Nothing
+ *
+ *PURPOSE: number of seats is set
+ *
+ ********************************************************/
 void Table::setNumberOfSeats(unsigned int seats)
 {
     mNumberOfSeats = seats;
 }
 
+LinkedList& Table::getOrders()
+{
+	return mOrders;
+}
+
+/*
+ *PRE: Nothing
+ *
+ *POST: number of seats occupied is returned
+ *
+ *PURPOSE: to get the number of seats
+ *
+ ********************************************************/
 unsigned int Table::getSeatsOccupied()
 {
     return  mSeatsOccupied;
 }
 
+/*
+ *PRE: number of people
+ *
+ *POST: Nothing
+ *
+ *PURPOSE: sets the number of seats occupied to the number of peole
+ *
+ ********************************************************/
 void Table::setSeatsOccupied(unsigned int people)
 {
     mSeatsOccupied = people;
 }
 
+/*
+ *PRE: Nothing
+ *
+ *POST: whether its occupied or not
+ *
+ *PURPOSE: to tell if the table is occupied
+ *
+ ********************************************************/
 bool Table::isOccupied()
 {
     return (mSeatsOccupied > 0);
 }
 
-LinkedList& Table::getOrders()
+/*
+ *PRE: a string representing the waiters id
+ *
+ *POST: Nothing
+ *
+ *PURPOSE: to set the tables waiter id
+ *
+ ********************************************************/
+void Table::setWaiterID(std::string waiterID)
 {
-    return mOrders;
+    mWaiterID = waiterID;
 }
+
+/*
+ *PRE: Nothing
+ *
+ *POST: waiter id is returned
+ *
+ *PURPOSE: to return the waiters id
+ *
+ ********************************************************/
+std::string Table::getWaiterID()
+{
+    return mWaiterID;
+}
+
+/*
+ *PRE: Nothing
+ *
+ *POST: Nothing
+ *
+ *PURPOSE: to display orders of the table
+ *
+ ********************************************************/
+void Table::displayOrder()
+{
+    mOrders.display();
+}
+
+/*
+ *PRE: a menu item
+ *
+ *POST: Nothing
+ *
+ *PURPOSE: to add a menu item to the tables orders
+ *
+ ********************************************************/
+void Table::addToOrder(MenuItem item)
+{
+    mOrders.insertInOrder(item);
+}
+
+/*
+ *PRE: an order as a string
+ *
+ *POST: Nothing
+ *
+ *PURPOSE: to remove an order from the table
+ *
+ ********************************************************/
+void Table::removeFromOrder(std::string order)
+{
+    mOrders.remove(order);
+}
+
+/*
+ *PRE: Nothing
+ *
+ *POST: whether an order exists
+ *
+ *PURPOSE: to return if an order exists
+ *
+ ********************************************************/
+bool Table::orderExists()
+{
+    return !mOrders.empty();
+}
+
+/*
+ *PRE: Nothing
+ *
+ *POST: the total is returned
+ *
+ *PURPOSE: to return the total
+ *
+ ********************************************************/
+double Table::calculateBill()
+{
+    return mOrders.subTotalOrder();
+}
+
+MenuItem Table::popItem()
+{
+	return mOrders.pop();
+}
+

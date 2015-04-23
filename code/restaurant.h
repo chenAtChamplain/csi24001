@@ -13,36 +13,37 @@ const int tableSizes[] = { 2, 2, 4, 4, 4, 4, 4, 2, 6, 4, 4, 4, 2, 6, 4 };
 
 const string LOGIN_FILE_NAME = "login.txt",
              DINER_MENU = "diningMenu.txt",
-             TABLE_STATES = "tableState.txt";
+             TABLE_STATES = "tableState.txt",
+			    EMPLOYEE_FILE = "employeeInfo.txt",
+             CHANGE_BUFFER = "temp.txt";    //NEEDED FOR ChangeEmployee()
 
 /* Amount of options in each employee menu. */
-const int MANAGER_NUM_OPTIONS = 8;
+const int MANAGER_NUM_OPTIONS = 7;
 const int HOST_NUM_OPTIONS = 4;
 const int WAIT_NUM_OPTIONS = 6;
 const int COOK_NUM_OPTIONS = 7;
 
 /* Each of the Employee's options. */
-const std::string RESTAURANT_TITLE = "Wei's Place";
+const string RESTAURANT_TITLE = "Wei's Place";
 
-const std::string MANAGER_OPTIONS[MANAGER_NUM_OPTIONS] {
+const string MANAGER_OPTIONS[MANAGER_NUM_OPTIONS] {
 		"Hire Employee",
 		"Fire Employee",
 		"Update Employee Data",
-		"Search for Employee",
-		"Select Daily Staff",  
+		"Search for Employee", 
 		"Generate Daily Report",
 		"Log Out",
 		"Shut Down"
 };
 
-const std::string HOST_OPTIONS[HOST_NUM_OPTIONS] {
+const string HOST_OPTIONS[HOST_NUM_OPTIONS] {
 		"Display Empty Tables",
 		"Assign Party Size",
 		"Make Table Available",
 		"Log Out"
 };
 
-const std::string WAIT_OPTIONS[WAIT_NUM_OPTIONS] {
+const string WAIT_OPTIONS[WAIT_NUM_OPTIONS] {
 		"Take Order",
 		"Change Items In Order",
 		"Delete Items In Order",
@@ -51,7 +52,7 @@ const std::string WAIT_OPTIONS[WAIT_NUM_OPTIONS] {
 		"Log Out"
 };
 
-const std::string COOK_OPTIONS[COOK_NUM_OPTIONS] {
+const string COOK_OPTIONS[COOK_NUM_OPTIONS] {
 	"Display Item Menu",
 		"Change Item on Menu",
 		"Delete Item on Menu",
@@ -69,21 +70,23 @@ private:
 	int mNumOfOrders; //for adding up cumulative number of table orders for End Of Day Report
 	double mGrandTotal; //for adding up bills as we go along for End Of Day Report
 	Employee mCurrentUser;
-	//NumberList mKitchenList;  //improve variable name?
+	NumberList mKitchenList;  //improve variable name?
 	LinkedList mDiningMenu;  //better: DiningMenu mDiningMenu;
 	Table mTables[MAX_TABLES];
 
 	bool addMenuItem();
 	void billPaid();
 	void changeEmployee();
-   bool changeItemOrder(vector<string> order, int numChange, string newOrder);
+	bool changeItemOrder();
+	bool changeItemOrder(vector<string> order, int numChange, string newOrder);
 	bool changeMenuItem();
 	void changeMenuPrice();
 	bool checkOrderStatus(int orderNumber); //but there is no order number
 	bool clearTable();
 	void cookMenu();
 	void dailyReport();
-   bool deleteItemOrder(vector<string> order, int numChange);
+	void deleteItemOrder();
+	bool deleteItemOrder(vector<string> order, int numChange);
 	bool deleteMenuItem();
 	void displayDinerMenu();
 	void displayOpenTables();
@@ -94,6 +97,7 @@ private:
 	void hireEmployee();
 	void hostMenu();
 	void login();
+	void login(string user);
    void loadDinerMenu();
 	void managerMenu();
 	void orderReady();
@@ -104,20 +108,22 @@ private:
 	bool seatTable();
 	bool seatTable(int& tableId, string& waiter); // no waiter; 
 	void shutDown();
-   bool takeOrder(vector<string>mTakeOrder);
-	void viewOrderInProgress(NumberList orderList);
+	void takeOrder();
+	bool takeOrder(vector<string>mTakeOrder);
+
+	void viewOrderInProgress(NumberList &orderList);
 	void waitMenu();
-	
-
-public:
-	Restaurant();
-	~Restaurant();
-
-
 	void waitOperations();
 	void hostOperations();
 	void managerOperations();
 	void cookOperations();
+
+public:
+	Restaurant();
+	~Restaurant();
+	void testRun();
+
+
    void runRestaurant();
 
 

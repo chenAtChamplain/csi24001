@@ -122,7 +122,7 @@ bool NumberList::insert(int index, int data)
 	{
 		while (curr->mNext != NULL && tempPos != index) // Goes through all nodes until index
 		{
-			prev = curr;
+			prev = curr; 
 			curr = curr->mNext;
 			tempPos++;
 		}

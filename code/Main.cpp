@@ -23,10 +23,14 @@ the purpose of future plagiarism checking)
 
 
 #include <iostream>
-
+#include "restaurant.h"
 using namespace std;
 
 int main()
 {
-   return 0;
+	Restaurant weiPlace;
+
+	//weiPlace.runRestaurant();
+	weiPlace.testRun();
+
 }

@@ -1,0 +1,80 @@
+Risotto
+5.95
+Arborio Rice stirred with our own Chicken Stock and organic vegetables
+1
+
+Soda
+1.95
+We carry a variety of Pepsi products
+3
+
+Steak Nuovo di York
+14.95
+New York Steak in our signature italian style
+1
+
+Tiramisu
+4.95
+Our traditional layered cake of chocolate and espresso
+2
+
+#Table1 0 2 
+#Table2 0 0 
+#Table3 0 0 
+#Table4 0 0 
+#Table5 0 0 
+Cake
+4.95
+Triple layer chocolate cake
+2
+
+Cannoli
+3.95
+Our own signature pastry
+2
+
+Cannoli
+3.95
+Our own signature pastry
+2
+
+Lasagna
+7.95
+A layered dish of pasta, ricotta, and vegetables
+1
+
+Limonata
+1.95
+A carbonated lemonade
+3
+
+Steak Nuovo di York
+14.95
+New York Steak in our signature italian style
+1
+
+#Table6 0 2 
+#Table7 0 0 
+#Table8 0 0 
+#Table9 0 0 
+#Table10 0 0 
+Bruschetta
+4.95
+Italian bread is toasted and topped with dressed vegetables
+0
+
+Italian Soda
+2.95
+Your choice of peach, blackberry, or cherry
+3
+
+Lasagna
+7.95
+A layered dish of pasta, ricotta, and vegetables
+1
+
+#Table11 0 2 
+#Table12 0 0 
+#Table13 0 0 
+#Table14 0 0 
+#Table15 0 0 

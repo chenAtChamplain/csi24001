@@ -68,10 +68,10 @@
     <ClInclude Include="NumberList.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="waiter.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="employee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="waiter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

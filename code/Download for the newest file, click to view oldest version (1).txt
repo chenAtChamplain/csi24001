@@ -1,0 +1,4 @@
+Strange idiosyncrasy of Google Drive
+
+If you download the files from Google Drive, you'll get the most recent version.
+If you click on it to see it in the browser, you'll see the oldest version.
